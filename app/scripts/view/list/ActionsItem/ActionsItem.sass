@@ -1,0 +1,43 @@
+.b-actions-item
+  position: relative
+  display: inline-block
+  margin-right: 10px
+  &.lock
+    .b-actions-item--image
+      opacity: 0.5
+      cursor: default
+    .b-actions-item--rest-time
+      display: block
+  &--image
+    width: 60px
+    height: 60px
+    position: relative
+    cursor: pointer
+    &__1
+      background-image: url(../images/index/action1.png)
+      background-size: 57px 55px
+      background-repeat: no-repeat
+      background-position: center center
+    &__2
+      background-image: url(../images/index/action2.png)
+      background-size: 53px 39px
+      background-repeat: no-repeat
+      background-position: center center
+    &__3
+      background-image: url(../images/index/action3.png)
+      background-size: 32px 50px
+      background-repeat: no-repeat
+      background-position: center center
+    &__4
+      background-image: url(../images/index/action4.png)
+      background-size: 56px 54px
+      background-repeat: no-repeat
+      background-position: center center
+  &--rest-time
+    position: absolute
+    width: 60px
+    color: #fff
+    top: 15px
+    text-shadow: #000 0 0 2px
+    text-align: center
+    display: none

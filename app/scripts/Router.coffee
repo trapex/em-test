@@ -17,10 +17,14 @@ define [
       view = common.app.content.getViewDI View
       callback? view
 
+
+
   class MiddlewareRouter extends Middleware
     auth: (async, args)->
       async.resolve 'auth'
 
+
+      
   middleware = new MiddlewareRouter
 
   Router = Backbone.Router.extend

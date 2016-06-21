@@ -8,6 +8,7 @@ define (require, exports, module)->
   Page = require 'view/page'
   Widget = require 'view/widget'
   cookies = require 'cookies'
+  backgroundImage = require 'utils/backgroundImage'
   # require 'utils/jqueryPatch'  # uncomment if You need touch-click support
   #GAConstructor = require 'sp-utils-gaconstructor'
   #UserModel = require 'model/UserModel'
@@ -24,6 +25,10 @@ define (require, exports, module)->
     if settings.type != 'GET'
       jqxhr.setRequestHeader 'X-CSRF-Token', cookies.get('CSRF-Token')
 
+  Backbone.Epoxy.binding.addHandler 'background_image', {
+    set: ($el, url)->
+      backgroundImage $el, url
+  }
 
   class Application
     constructor: (common)->
@@ -57,16 +62,16 @@ define (require, exports, module)->
         item.showCurrent()
         this[key] = item
       Backbone.history.start {
-       pushState: Modernizr.history
+        pushState: Modernizr.history
       }
 
     initPushstateLinks: ->
       selector = "a:not([data-link]):not([href^='javascript:'])"
-      @$document.on "click", selector, (evt)->
-        $(".dropdown.open").removeClass("open")
-        return if !!$(this).parents(".pluso-box").length
-        href = $(this).attr("href") or ""
-        protocol = @protocol + "//"
+      @$document.on 'click', selector, (evt)->
+        $('.dropdown.open').removeClass('open')
+        return if !!$(this).parents('.pluso-box').length
+        href = $(this).attr('href') or ''
+        protocol = @protocol + '//'
         if href.slice(0, protocol.length) isnt protocol
           evt.preventDefault()
           common.router.navigate href, true
