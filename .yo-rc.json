@@ -1,0 +1,6 @@
+{
+  "generator-sp": {
+    "capprojectname": "em-project",
+    "csspreprocessor": "sass"
+  }
+}
